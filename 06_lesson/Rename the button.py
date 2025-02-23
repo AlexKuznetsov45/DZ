@@ -13,7 +13,7 @@ driver.get("http://uitestingplayground.com/textinput")
 
 # Ожидаем полной загрузки страницы
 wait = WebDriverWait(driver, 4)
-wait.until(EC.presence_of_all_elements_located)
+wait.until(EC.presence_of_element_located((By.ID, 'newButtonName')))
 
 # Вводим текст в поле ввода
 input_field = driver.find_element(By.ID, 'newButtonName')

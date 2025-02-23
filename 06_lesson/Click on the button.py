@@ -1,32 +1,29 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver                  # Импортируем модуль webdriver из библиотеки Selenium
+from selenium.webdriver.common.by import By      # Импортируем класс By для определения локаторов элементов
+from selenium.webdriver.support.ui import WebDriverWait  # Импортируем модуль для ожидания элементов
+from selenium.webdriver.support import expected_conditions as EC  # Импортируем набор условий ожидания
 
+# Инициализация драйвера для браузера Chrome
+driver = webdriver.Chrome()
 
-# Инициализация драйвера
-service = ChromeService(executable_path=ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service)
-
-# Перейти на страницу
+# Открытие веб-сайта
 driver.get("http://uitestingplayground.com/ajax")
 
-# Явное ожидание загрузки страницы
-driver.implicitly_wait(20)  # Ждать до 20 секунд до нахождения элемента
+# Ожидание появления кнопки с классом btn-primary
+button = WebDriverWait(driver, 5).until(
+    EC.element_to_be_clickable((By.CSS_SELECTOR, ".btn-primary"))  # Ожидаем кнопку, которая должна быть кликбельной
+)
 
-# Найти и нажать на синюю кнопку
-button = WebDriverWait(driver, 15).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(), 'Button Triggering AJAX Request')]")))
+# Нажатие на кнопку
 button.click()
 
-# Найти элемент с текстом
-content = driver.find_element(By.CSS_SELECTOR, "#content")
-paragraph = content.find_element(By.CSS_SELECTOR, "p.bg-success")
+# Ожидание появления параграфа с классом bg-success
+text = WebDriverWait(driver, 16).until(
+    EC.presence_of_element_located((By.CSS_SELECTOR, "p.bg-success"))  # Ожидаем параграф с определенным стилем
+).text  # Получаем текст из найденного элемента
 
-# Получить и вывести текст
-text = paragraph.text
+# Печать текста
 print(text)
 
-# Закрыть браузер
+# Закрытие браузера
 driver.quit()
