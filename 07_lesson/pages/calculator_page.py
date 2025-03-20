@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
 class CalculatorPage:
     def __init__(self, driver):
         self.driver = driver
@@ -18,7 +19,9 @@ class CalculatorPage:
     # Методы для взаимодействия с элементами
     def open(self):
         """Открыть страницу калькулятора."""
-        self.driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html")
+        self.driver.get(
+            "https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html"
+        )
 
     def set_delay(self, delay_value):
         """Функция для ввода значения задержки."""

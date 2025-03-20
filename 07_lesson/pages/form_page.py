@@ -77,10 +77,10 @@ class FormPage:
 
     # Проверка подсветки поля zip_code
     def is_zip_code_highlighted_red(self):
-        zip_code_field = WebDriverWait(self.driver, 10).until(
+        # Проверяем наличие элемента с классом 'alert-danger' для поля zip_code
+        return WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(self.ZIP_CODE_ALERT_LOCATOR)
         )
-        return True  # Если элемент найден, значит поле подсвечено красным
 
     # Проверка успешной валидации полей
     def validate_successful_fields(self):

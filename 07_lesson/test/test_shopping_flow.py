@@ -7,6 +7,7 @@ from pages.product_page import ProductPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 
+
 @pytest.fixture
 def browser():
     """Фикстура для запуска браузера."""
@@ -15,6 +16,7 @@ def browser():
     driver = webdriver.Chrome(service=service, options=options)
     yield driver
     driver.quit()
+
 
 def test_shopping_flow(browser):
     """Тестовая функция для проверки процесса покупки."""
@@ -46,4 +48,6 @@ def test_shopping_flow(browser):
     total_cost = checkout_page.get_total_cost()
 
     # Проверка итоговой суммы
-    assert total_cost == "Total: $58.29", f"Итоговая сумма не совпадает. Ожидается: Total: $58.29, Фактическая: {total_cost}"
+    assert (
+        total_cost == "Total: $58.29"
+    ), f"Итоговая сумма не совпадает. Ожидается: Total: $58.29, Фактическая: {total_cost}"
