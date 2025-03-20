@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 class CheckoutPage:
     def __init__(self, driver):
         self.driver = driver
@@ -27,16 +26,6 @@ class CheckoutPage:
 
     def get_total_cost(self):
         """Получение итоговой стоимости."""
-        total_cost = (
-            WebDriverWait(self.driver, 10)
-            .until(
-                EC.visibility_of_element_located(
-                    (
-                        By.CSS_SELECTOR,
-                        "div.summary_total_label[data-test='total-label']",
-                    )
-                )
-            )
-            .text
-        )
+        total_cost = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.CSS_SELECTOR, "div.summary_total_label[data-test='total-label']"))).text
         return total_cost
