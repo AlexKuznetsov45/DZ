@@ -101,5 +101,7 @@ class FormPage:
                 EC.visibility_of_element_located(field_selector)
             )
             print(
-                f"Поле '{field_selector[1].split('.')[0]}' успешно валидировано: {field.text} (цвет фона: зеленый)"
+                f"Поле '{field_selector[1].split('.')[0]} "
+                f"успешно валидировано: "
+                f"{field.text} (цвет фона: зеленый)"
             )

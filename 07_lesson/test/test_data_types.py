@@ -23,7 +23,8 @@ def test_fill_form(browser, form_values):
     form_page = FormPage(browser)
 
     # Открытие страницы
-    browser.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
+    browser.get(
+            "https://bonigarcia.dev/selenium-webdriver-java/data-types.html")
 
     # Заполнение формы
     form_page.enter_first_name(form_values["first_name"])

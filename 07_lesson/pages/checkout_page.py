@@ -16,13 +16,21 @@ class CheckoutPage:
     # Методы для взаимодействия с элементами
     def fill_information(self, first_name, last_name, postal_code):
         """Заполнение формы информацией."""
-        first_name_input = self.driver.find_element(*self.FIRST_NAME_INPUT_LOCATOR)
+        first_name_input = self.driver.find_element(
+            *self.FIRST_NAME_INPUT_LOCATOR
+        )
         first_name_input.send_keys(first_name)
-        last_name_input = self.driver.find_element(*self.LAST_NAME_INPUT_LOCATOR)
+        last_name_input = self.driver.find_element(
+            *self.LAST_NAME_INPUT_LOCATOR
+        )
         last_name_input.send_keys(last_name)
-        postal_code_input = self.driver.find_element(*self.POSTAL_CODE_INPUT_LOCATOR)
+        postal_code_input = self.driver.find_element(
+            *self.POSTAL_CODE_INPUT_LOCATOR
+        )
         postal_code_input.send_keys(postal_code)
-        continue_button = self.driver.find_element(*self.CONTINUE_BUTTON_LOCATOR)
+        continue_button = self.driver.find_element(
+            *self.CONTINUE_BUTTON_LOCATOR
+        )
         continue_button.click()
 
     def get_total_cost(self):

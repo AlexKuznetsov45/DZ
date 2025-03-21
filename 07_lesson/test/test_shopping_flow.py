@@ -1,21 +1,7 @@
-import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
 from pages.shop import Shop
 from pages.product_page import ProductPage
 from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
-
-
-@pytest.fixture
-def browser():
-    """Фикстура для запуска браузера."""
-    service = ChromeService(ChromeDriverManager().install())
-    options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(service=service, options=options)
-    yield driver
-    driver.quit()
 
 
 def test_shopping_flow(browser):
@@ -50,4 +36,5 @@ def test_shopping_flow(browser):
     # Проверка итоговой суммы
     assert (
         total_cost == "Total: $58.29"
-    ), f"Итоговая сумма не совпадает. Ожидается: Total: $58.29, Фактическая: {total_cost}"
+    ), f"Итоговая сумма не совпадает. Ожидается: Total: $58.29, "\
+       f"Фактическая: {total_cost}"

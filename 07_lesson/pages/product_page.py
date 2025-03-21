@@ -9,7 +9,8 @@ class ProductPage:
 
     # Локаторы элементов
     ADD_TO_CART_BACKPACK_LOCATOR = (By.ID, "add-to-cart-sauce-labs-backpack")
-    ADD_TO_CART_T_SHIRT_LOCATOR = (By.ID, "add-to-cart-sauce-labs-bolt-t-shirt")
+    ADD_TO_CART_T_SHIRT_LOCATOR = (
+                            By.ID, "add-to-cart-sauce-labs-bolt-t-shirt")
     ADD_TO_CART_ONESIE_LOCATOR = (By.ID, "add-to-cart-sauce-labs-onesie")
 
     # Методы для взаимодействия с элементами
